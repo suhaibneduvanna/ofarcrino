@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* All these are for styling only. */
+        @import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
+
+
+
+
+
+        body {
+            background-color: #f8f8f8;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+
+        }
+
+        .card {
+            border: none;
+            border-radius: 30px;
+        }
+
+        .card .card-header {
+            margin-top: 25px;
+            border-radius: 30px;
+            background-color: white;
+            border: none;
+        }
+
+        .card .card-body {
+            margin-bottom: 20px;
+
+        }
+
+        .value {
+            font-family: 'Rampart One', cursive;
+            font-size: 5em;
+            display: block;
+            font-weight: bold;
+
+        }
+
+        .heading {
+            padding: 15px;
+            border-radius: 30px;
+            background-color: #037866;
+            color: white;
+
+        }
+
+        .heading-per-capita {
+            background-color: #77101f;
+            color: white;
+            padding: 15px;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="slide" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <div class="container-fluid pb-5 pt-5 d-flex justify-content-center">
+                    <div class="col-sm-8 col-md-6">
+                        <div class="card">
+                            <div class="card-header text-dark">
+
+                                <h1 class="text-center">AFTER <span class="p-2"
+                                        style="color: white; background-color: black; border-radius: 60px;"
+                                        id="after1">0</span> RESULTS</h1>
+
+                            </div>
+                            <div class="card-body" style="height: 100%">
+                                <div class="content">
+                                    <h1 style="color: #77101f;" id="gp1" class="value">0</h1>
+                                    <h1 style="color: #672366;" id="gp2" class="value">0</h1>
+                                    <h1 style="color: #037866;" id="gp3" class="value">0</h1>
+
+                                </div>
+                                <div class="chartjs-size-monitor"
+                                    style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                                    <div class="chartjs-size-monitor-expand"
+                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0">
+                                        </div>
+                                    </div>
+                                    <div class="chartjs-size-monitor-shrink"
+                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                        <div style="position:absolute;width:200%;height:200%;left:0; top:0">
+                                        </div>
+                                    </div>
+                                </div> <canvas id="chart-line" width="299" height="200" class="chartjs-render-monitor"
+                                    style="display: block; width: 299px; height: 200px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="carousel-item">
+
+                <div class="container-fluid  pb-5 pt-5 d-flex justify-content-center">
+                    <div class="col-sm-8 col-md-6">
+
+                        <div class="text-dark mb-3 mt-3">
+                            <h1 class="heading text-center">CLASS WISE POINTS AFTER <span class="p-2"
+                                    style="color: white; background-color: black; border-radius: 60px;"
+                                    id="after2">0</span> RESULTS</h1>
+                        </div>
+                        <div class="content row justify-content-center">
+
+
+                            <div class="col-lg-3 mt-3 ">
+
+                                <div class="card shadow-lg border-none">
+                                    <div class="card-header text-dark d-flex justify-content-center">
+                                        <h1>UG 1</h1>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h3 style="color: #672366;" id="cl1" class="value">0</h3>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-3 mt-3">
+
+                                <div class="card shadow-lg">
+                                    <div class="card-header text-dark d-flex justify-content-center">
+                                        <h1>UG 2</h1>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h3 style="color: #672366;" id="cl2" class="value">0</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-3 mt-3">
+
+                                <div class="card shadow-lg">
+                                    <div class="card-header text-dark d-flex justify-content-center">
+                                        <h1>UG 3</h1>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h3 style="color: #672366;" id="cl3" class="value">0</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="content row justify-content-center">
+                            <div class="col-lg-3 mt-3">
+
+                                <div class="card shadow-lg">
+                                    <div class="card-header text-dark d-flex justify-content-center">
+                                        <h1>UG 4</h1>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h3 style="color: #672366;" id="cl4" class="value">0</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-3 mt-3">
+
+                                <div class="card shadow-lg">
+                                    <div class="card-header text-dark d-flex justify-content-center">
+                                        <h1>UG 5</h1>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h3 style="color: #672366;" id="cl5" class="value">0</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="content row justify-content-center">
+
+
+                            <div class="col-lg-3 mt-3">
+
+                                <div class="card shadow-lg">
+                                    <div class="card-header text-dark d-flex justify-content-center">
+                                        <h1>PG 1</h1>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h3 style="color: #672366;" id="cl6" class="value">0</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-3 mt-3">
+
+                                <div class="card shadow-lg">
+                                    <div class="card-header text-dark d-flex justify-content-center">
+                                        <h1>PG 2</h1>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h3 style="color: #672366;" id="cl7" class="value">0</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="carousel-item">
+
+                <div class="container-fluid  pb-5 pt-5 d-flex justify-content-center">
+                    <div class="col-sm-8 col-md-6">
+
+                        <div class="heading-per-capita">
+                            <h1 class="text-center">PER CAPITA POINTS AFTER <span class="p-2"
+                                    style="color: white; background-color: black; border-radius: 60px;"
+                                    id="after3">0</span> RESULTS</h1>
+                        </div>
+                        <div class="content row justify-content-center">
+
+
+                            <div class="col-lg-3 mt-3 ">
+
+                                <div class="card shadow-lg border-none">
+                                    <div class="card-header text-dark d-flex justify-content-center">
+                                        <h1>UG 1</h1>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h3 style="color: #672366;" id="counter1" class="value">0</h3>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-3 mt-3">
+
+                                <div class="card shadow-lg">
+                                    <div class="card-header text-dark d-flex justify-content-center">
+                                        <h1>UG 2</h1>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h3 style="color: #672366;" id="counter2" class="value">0</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-3 mt-3">
+
+                                <div class="card shadow-lg">
+                                    <div class="card-header text-dark d-flex justify-content-center">
+                                        <h1>UG 3</h1>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h3 style="color: #672366;" id="counter3" class="value">0</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="content row justify-content-center">
+                            <div class="col-lg-3 mt-3">
+
+                                <div class="card shadow-lg">
+                                    <div class="card-header text-dark d-flex justify-content-center">
+                                        <h1>UG 4</h1>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h3 style="color: #672366;" id="counter4" class="value">0</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-3 mt-3">
+
+                                <div class="card shadow-lg">
+                                    <div class="card-header text-dark d-flex justify-content-center">
+                                        <h1>UG 5</h1>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h3 style="color: #672366;" id="counter5" class="value">0</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="content row justify-content-center">
+
+
+                            <div class="col-lg-3 mt-3">
+
+                                <div class="card shadow-lg">
+                                    <div class="card-header text-dark d-flex justify-content-center">
+                                        <h1>PG 1</h1>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h3 style="color: #672366;" id="counter6" class="value">0</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-3 mt-3">
+
+                                <div class="card shadow-lg">
+                                    <div class="card-header text-dark d-flex justify-content-center">
+                                        <h1>PG 2</h1>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center">
+                                        <h3 style="color: #672366;" id="counter7" class="value">0</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+
+    <script>
+        // $('#slide').carousel({
+        //     interval: 3000,
+        //     cycle: true
+        // }); 
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAJf7ghbO3hFVDw-FQcj78886LhWJP0psg",
+            authDomain: "ofarc-580e4.firebaseapp.com",
+            projectId: "ofarc-580e4",
+            storageBucket: "ofarc-580e4.appspot.com",
+            messagingSenderId: "392416314916",
+            appId: "1:392416314916:web:66eceb55a9246e82e0bab1"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        let db = firebase.firestore();
+
+        db.collection("results").onSnapshot(async (snapshot) => {
+            let data;
+            await snapshot.docChanges().forEach((change) => {
+                let after = document.getElementById('after1');
+                console.log(change.doc.data())
+                if (change.type === "added") {
+                    data = change.doc.data();
+                    console.log("Added result: ", change.doc.data());
+
+
+                }
+
+                if (change.type === "modified") {
+                    data = change.doc.data();
+                    console.log("Modified result: ", change.doc.data());
+
+                    // after.innerHTML(data.after);
+
+                }
+
+
+
+
+
+                if (data.Romanesque != 0 && data.Baroque != 0 && data.Arabesque != 0) {
+                    after.innerHTML = data.after;
+
+                    let upto1 = 0;
+
+                    let counts1 = setInterval(update1);
+                    function update1() {
+                        var count1 = document.getElementById("gp1");
+                        count1.innerHTML = ++upto1;
+                        if (upto1 === parseInt(data.Arabesque)) {
+                            clearInterval(counts1);
+                        }
+
+
+
+                    }
+
+                    let upto2 = 0;
+
+                    let counts2 = setInterval(update2);
+                    function update2() {
+                        var count2 = document.getElementById("gp2");
+                        count2.innerHTML = ++upto2;
+                        if (upto2 === parseInt(data.Baroque)) {
+                            clearInterval(counts2);
+                        }
+
+                    }
+
+                    let upto3 = 0;
+
+                    let counts3 = setInterval(update3);
+                    function update3() {
+                        var count3 = document.getElementById("gp3");
+
+                        count3.innerHTML = ++upto3;
+                        if (upto3 === parseInt(data.Romanesque)) {
+                            clearInterval(counts3);
+                        }
+                    }
+
+                    var ctx = $("#chart-line");
+
+                    const chart_data = {
+                        labels: ["Arabesque", "Baroque", "Romanesque"],
+                        datasets: [{
+                            label: 'Group Wise Result',
+                            data: [parseInt(data.Arabesque), parseInt(data.Baroque), parseInt(data.Romanesque)],
+                            backgroundColor: [
+                                "#77101f", "#672366", "#037866"
+
+                            ],
+                            borderColor: [
+                                "#77101f", "#672366", "#037866"
+                            ],
+                            borderWidth: 1
+                        }]
+                    };
+                    const config = {
+                        type: 'bar',
+                        data: chart_data,
+                        options: {
+                            title: {
+                                text: "Result",
+                                display: false
+
+
+                            },
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            tooltips: {
+                                callbacks: {
+                                    label: function (tooltipItem) {
+                                        return tooltipItem.yLabel;
+                                    }
+                                }
+                            }
+                        }
+                    };
+                    var myLineChart = new Chart(ctx, config);
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            })
+
+        });
+
+        db.collection("class_results").onSnapshot(async (snapshot) => {
+
+            let data;
+            await snapshot.docChanges().forEach((change) => {
+
+                if (change.type === "added") {
+                    data = change.doc.data();
+                    console.log("Added city: ", change.doc.data());
+
+                }
+
+                if (change.type === "modified") {
+                    data = change.doc.data();
+                    console.log("Modified city: ", change.doc.data());
+
+                }
+
+                if (data.UG1 != "0" && data.UG2 != "0" && data.UG3 != "0" && data.UG4 != "0" && data.UG5 != "0" && data.UG5 != "0" && data.PG1 != "0" && data.PG2 != "0") {
+
+                    document.getElementById('after2').innerHTML = data.after;
+
+                    let counts1 = setInterval(update1);
+                    let counts2 = setInterval(update2);
+                    let counts3 = setInterval(update3);
+                    let counts4 = setInterval(update4);
+                    let counts5 = setInterval(update5);
+                    let counts6 = setInterval(update6);
+                    let counts7 = setInterval(update7);
+
+
+
+                    let upto1 = 0;
+                    let upto2 = 0;
+                    let upto3 = 0;
+                    let upto4 = 0;
+                    let upto5 = 0;
+                    let upto6 = 0;
+                    let upto7 = 0;
+
+
+                    function update1() {
+                        var count1 = document.getElementById("cl1");
+                        count1.innerHTML = ++upto1;
+                        if (upto1 === parseInt(data.UG1)) {
+                            clearInterval(counts1);
+                        }
+
+
+
+                    }
+
+                    function update2() {
+                        var count2 = document.getElementById("cl2");
+                        count2.innerHTML = ++upto2;
+                        if (upto2 === parseInt(data.UG2)) {
+                            clearInterval(counts2);
+                        }
+
+                    }
+
+                    function update3() {
+                        var count3 = document.getElementById("cl3");
+
+                        count3.innerHTML = ++upto3;
+                        if (upto3 === parseInt(data.UG3)) {
+                            clearInterval(counts3);
+                        }
+                    }
+
+                    function update4() {
+                        var count4 = document.getElementById("cl4");
+
+                        count4.innerHTML = ++upto4;
+                        if (upto4 === parseInt(data.UG4)) {
+                            clearInterval(counts4);
+                        }
+                    }
+
+                    function update5() {
+                        var count5 = document.getElementById("cl5");
+
+                        count5.innerHTML = ++upto5;
+                        if (upto5 === parseInt(data.UG5)) {
+                            clearInterval(counts5);
+                        }
+                    }
+
+                    function update6() {
+                        var count6 = document.getElementById("cl6");
+
+                        count6.innerHTML = ++upto6;
+                        if (upto6 === parseInt(data.PG1)) {
+                            clearInterval(counts6);
+                        }
+                    }
+
+                    function update7() {
+                        var count7 = document.getElementById("cl7");
+
+                        count7.innerHTML = ++upto7;
+                        if (upto7 === parseInt(data.PG2)) {
+                            clearInterval(counts7);
+                        }
+                    }
+
+
+                }
+
+
+
+            })
+
+        });
+
+        db.collection("class_results").onSnapshot(async (snapshot) => {
+
+            let data;
+            await snapshot.docChanges().forEach((change) => {
+
+                if (change.type === "added") {
+                    data = change.doc.data();
+                    console.log("Added city: ", change.doc.data());
+
+                }
+
+                if (change.type === "modified") {
+                    data = change.doc.data();
+                    console.log("Modified city: ", change.doc.data());
+
+                }
+
+                if (data.UG1 != "0" && data.UG2 != "0" && data.UG3 != "0" && data.UG4 != "0" && data.UG5 != "0" && data.UG5 != "0" && data.PG1 != "0" && data.PG2 != "0") {
+
+                    document.getElementById('after3').innerHTML = data.after;
+
+
+                    var count1 = document.getElementById("counter1");
+                    count1.innerHTML = (data.UG1 / 33).toFixed(1).toString()
+
+                    var count2 = document.getElementById("counter2");
+                    count2.innerHTML = (data.UG2 / 26).toFixed(1).toString()
+
+                    var count3 = document.getElementById("counter3");
+                    count3.innerHTML = (data.UG3 / 33).toFixed(1).toString()
+
+
+                    var count4 = document.getElementById("counter4");
+
+                    count4.innerHTML = (data.UG4 / 32).toFixed(1).toString()
+
+
+                    var count5 = document.getElementById("counter5");
+
+                    count5.innerHTML = (data.UG5 / 36).toFixed(1).toString()
+
+
+                    var count6 = document.getElementById("counter6");
+
+                    count6.innerHTML = (data.PG1 / 27).toFixed(1).toString()
+
+
+
+                    var count7 = document.getElementById("counter7");
+
+                    count7.innerHTML = (data.PG2 / 53).toFixed(1).toString()
+
+                 
+                }
+
+
+
+            })
+
+        });
+
+    </script>
+
+    <body>
+
+
+</html>
